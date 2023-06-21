@@ -1,0 +1,21 @@
+.signform__button {
+  margin: 0 0 12px;
+  padding: 14px 0;
+  background: #fff;
+  text-align: center;
+  min-width: 358px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #000;
+  border-radius: 2px;
+  transition: all .8s ease 0s;
+}
+
+.signform__button:hover {
+  opacity: 0.85;
+  cursor: pointer;
+}

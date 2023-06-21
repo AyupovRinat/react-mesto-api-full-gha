@@ -1,0 +1,14 @@
+.element__counter {
+  margin: 0;
+  margin-right: 5px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #000;
+  width: 13px;
+  height: 10px;
+
+}

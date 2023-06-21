@@ -1,0 +1,8 @@
+.signform {
+  margin: 60px auto 112px;
+  min-width: 358px;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
