@@ -6,12 +6,12 @@ const bodyParser = require('body-parser');
 const userRouter = require('./routes/user');
 const cardRouter = require('./routes/card');
 const auth = require('./middlewares/auth');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { login, createUser } = require('./controllers/users');
 const { signupValidator, signinValidator } = require('./utils/validation');
 const NotFoundError = require('./errors/notFoundError');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
@@ -21,6 +21,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', signinValidator, login);
 app.post('/signup', signupValidator, createUser);
