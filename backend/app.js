@@ -1,5 +1,5 @@
 const express = require('express');
-
+require('dotenv').config();
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const bodyParser = require('body-parser');
@@ -11,7 +11,7 @@ const { signupValidator, signinValidator } = require('./utils/validation');
 const NotFoundError = require('./errors/notFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3002 } = process.env;
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
