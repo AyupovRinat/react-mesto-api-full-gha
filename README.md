@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.88.158
+IP 51.250.88.158
 
 Frontend https://ayupov.students.nomoreparties.sbs
 
