@@ -5,12 +5,12 @@
 
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/AyupovRinat/react-mesto-api-full-gha
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP 158.160.103.71;
 
-Frontend https://...
+Frontend https://ayupov.students.nomoreparties.sbs
 
-Backend https://...
+Backend https://api.ayupov.students.nomoreparties.sbs
