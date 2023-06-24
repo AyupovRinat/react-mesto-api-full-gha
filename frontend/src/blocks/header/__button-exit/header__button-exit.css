@@ -1,0 +1,15 @@
+.header__button-exit {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #fff;
+  background-color: #000;
+  border: none;
+}
+
+.header__button-exit:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

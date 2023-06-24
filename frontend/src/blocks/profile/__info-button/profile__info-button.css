@@ -1,0 +1,22 @@
+.profile__info-button {
+  width: 24px;
+  height: 24px;
+  background-color: #000;
+  background-image: url(../../../images/ruchka.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+.profile__info-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 845px) {
+  .profile__info-button {
+    width: 18px;
+    height: 18px;
+  }
+}

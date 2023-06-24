@@ -1,0 +1,27 @@
+.profile__avatar-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 30px 0 0;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  background-color: #000;
+  background-image: url(../../../images/bigruchka.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 26px;
+  opacity: 0;
+  border: 0;
+}
+
+.profile__avatar-btn:hover {
+  opacity: 0.8;
+  transition: .8s;
+}
+
+@media screen and (max-width: 880px) {
+  .profile__avatar-btn {
+    margin-right: 0;
+  }
+}
