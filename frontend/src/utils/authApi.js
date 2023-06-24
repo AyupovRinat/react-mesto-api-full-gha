@@ -46,6 +46,6 @@ class Auth {
     .then(this._checkResponse)
 };
 }
-  const auth = new Auth('https://auth.nomoreparties.co');
+  const auth = new Auth('https://api.ayupov.students.nomoreparties.sbs');
 
 export default auth;
