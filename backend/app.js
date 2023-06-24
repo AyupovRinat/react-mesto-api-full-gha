@@ -1,7 +1,10 @@
 const express = require('express');
 
+// require('dotenv').config();
+
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const userRouter = require('./routes/user');
 const cardRouter = require('./routes/card');
@@ -16,6 +19,7 @@ const { PORT = 3000 } = process.env;
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const app = express();
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
