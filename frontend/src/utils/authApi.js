@@ -31,14 +31,18 @@ class Auth {
       body: JSON.stringify({ email, password })
     })
       .then(this._checkResponse)
-
+      .then((data) => {
+        localStorage.getItem('jwt', data.token)
+        return data;
+      })
   };
 
-  checkToken(token) {
+  checkToken() {
+    const token = localStorage.getItem('jwt');
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
       headers: {
-
+        'Accepr': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
@@ -46,6 +50,6 @@ class Auth {
     .then(this._checkResponse)
 };
 }
-  const auth = new Auth('https://auth.nomoreparties.co');
+  const auth = new Auth('http://localhost:3000');
 
 export default auth;

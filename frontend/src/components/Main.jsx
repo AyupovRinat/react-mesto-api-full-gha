@@ -21,7 +21,7 @@ function Main({ onEditAvatar, onCardClick, onEditProfile, onAddPlace, onCardDele
         </div>
         <button type="button" className="profile__add-button" aria-label="добавить" onClick={onAddPlace}></button>
       </section>
-      <section className="elements">{cards.map((card) => (
+      <section className="elements">{cards.map && cards.map((card) => (
         <Card card={card} key={card._id}
           onCardClick={onCardClick}
           onCardDelete={onCardDelete}
