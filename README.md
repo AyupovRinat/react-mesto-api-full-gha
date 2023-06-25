@@ -11,6 +11,6 @@
 
 IP 158.160.103.71;
 
-Frontend http://ayupov.students.nomoreparties.sbs
+Frontend https://ayupov.students.nomoreparties.sbs
 
-Backend http://api.ayupov.students.nomoreparties.sbs
+Backend https://api.ayupov.students.nomoreparties.sbs

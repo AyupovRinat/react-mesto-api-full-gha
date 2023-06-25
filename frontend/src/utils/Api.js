@@ -3,6 +3,7 @@ import autoprefixer from "autoprefixer";
 class Api {
   constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
+    this._token = null;
   }
 
   _checkResponce(res) {
@@ -13,16 +14,20 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
+  setToken(token) {
+    this._token = token;
+  };
+
   getAppinfo() {
     return Promise.all([this.getInitialCards(), this.getUserInfo()])
   }
 
   //загрузка инфо о пользователе
   getUserInfo() {
-    const token = localStorage.getItem('jwt');
+    console.log(this._token);
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
       },
     })
       .then(res => this._checkResponce(res));
@@ -30,21 +35,19 @@ class Api {
 
   //загрузка карточек
   getInitialCards() {
-    const token = localStorage.getItem('jwt');
     return fetch(`${this._baseUrl}/cards`, {
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
       },
     })
       .then((res) => this._checkResponce(res));
   }
   //редактирование профиля
   editUserInfo(data) {
-    const token = localStorage.getItem('jwt');
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -57,11 +60,10 @@ class Api {
   }
   //редактирование аватара
   editUserAvatar(data) {
-    const token = localStorage.getItem('jwt');
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -73,11 +75,10 @@ class Api {
   }
   //добавление новой карточки
   addNewCard(data) {
-    const token = localStorage.getItem('jwt');
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -90,11 +91,10 @@ class Api {
   }
 
   deleteCard(id) {
-    const token = localStorage.getItem('jwt');
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: 'DELETE',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json',
       },
     })
@@ -102,11 +102,10 @@ class Api {
   }
 
   setlike(id) {
-    const token = localStorage.getItem('jwt');
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: 'PUT',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json',
       },
     })
@@ -115,11 +114,10 @@ class Api {
   }
 
   deleteLike(id) {
-    const token = localStorage.getItem('jwt');
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: 'DELETE',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json',
       },
     })
@@ -129,7 +127,8 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'http://api.ayupov.students.nomoreparties.sbs',
+  // baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.ayupov.students.nomoreparties.sbs',
   headers: {
     'Content-Type': 'application/json'
   }

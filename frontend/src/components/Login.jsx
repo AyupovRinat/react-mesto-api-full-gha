@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignForm from './SignForm';
 import auth from '../utils/authApi.js';
+import { api } from '../utils/Api';
 
 function Login({ onLogin, onEmail }) {
   const [formValue, setFormValue] = useState({
@@ -28,6 +29,7 @@ function Login({ onLogin, onEmail }) {
     auth.authorize(formValue.email, formValue.password)
       .then((data) => {
         if (data.token) {
+          api.setToken(data.token)
           localStorage.setItem("jwt", data.token);
           setFormValue({ email: '', password: '' });
           onLogin();

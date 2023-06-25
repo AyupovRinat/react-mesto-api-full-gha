@@ -33,15 +33,17 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    Promise.all([api.getInitialCards(), api.getUserInfo()])
-      .then(([cards, user]) => {
-        setCards(cards);
-        setCurrentUser(user);
-      })
-      .catch((err) => {
-        console.log(`в App Ошибка: ${err}`);
-      })
-  }, []);
+    if(loggedIn) {
+      Promise.all([api.getInitialCards(), api.getUserInfo()])
+        .then(([cards, user]) => {
+          setCards(cards.reverse());
+          setCurrentUser(user.data);
+        })
+        .catch((err) => {
+          console.log(`в App Ошибка: ${err}`);
+        })
+    }
+  }, [loggedIn]);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -72,7 +74,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((id) => id === currentUser._id);
     if (!isLiked) {
       api
         .setlike(card._id)
@@ -141,6 +143,7 @@ function App() {
   }
 
   function handleSingOut() {
+    api.setToken(null);
     localStorage.removeItem("jwt");
     setEmail("");
     setLoggedIn(false);
@@ -173,6 +176,7 @@ function App() {
     if (jwt) {
       auth.checkToken(jwt)
         .then((res) => {
+          api.setToken(jwt);
           setEmail(res.data.email);
           setLoggedIn(true);
           navigate("/", { replace: true });

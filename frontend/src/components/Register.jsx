@@ -22,9 +22,9 @@ function Register({ onRegister, onSuccess }) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (!formValue.email || !formValue.password) {
+   /* if (!formValue.email || !formValue.password) {
       return;
-    }
+    }*/
     auth.register(formValue.email, formValue.password)
       .then(() => {
         setFormValue({ email: '', password: '' });
