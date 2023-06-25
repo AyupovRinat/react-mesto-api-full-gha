@@ -50,6 +50,6 @@ class Auth {
     .then(this._checkResponse)
 };
 }
-  const auth = new Auth('http://localhost:3000');
+  const auth = new Auth('http://api.ayupov.students.nomoreparties.sbs');
 
 export default auth;
