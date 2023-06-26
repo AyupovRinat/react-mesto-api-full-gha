@@ -37,7 +37,9 @@ function Login({ onLogin, onEmail }) {
           navigate('/', { replace: true });
         }
       })
-      .catch(err => console.log(err))
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   return (

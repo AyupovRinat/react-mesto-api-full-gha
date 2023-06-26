@@ -206,7 +206,7 @@ function App() {
                 onCardClick={handleCardClick}
               />}
             />
-            <Route path="/sign-in" element={<Login onLogin={handleLogin} onEmail={handleEmail} />} />
+            <Route path="/sign-in" element={<Login onLogin={handleLogin} onEmail={handleEmail} onSuccess={onSuccess} />} />
             <Route path="/sign-up" element={<Register onRegister={handleRegister} onSuccess={onSuccess} />} />
           </Routes>
           {loggedIn &&
