@@ -24,7 +24,6 @@ class Api {
 
   //загрузка инфо о пользователе
   getUserInfo() {
-    console.log(this._token);
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
         authorization: `Bearer ${this._token}`,

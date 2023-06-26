@@ -4,7 +4,7 @@ import SignForm from './SignForm';
 import auth from '../utils/authApi.js';
 import { api } from '../utils/Api';
 
-function Login({ onLogin, onEmail }) {
+function Login({ onLogin, onEmail, onRegister, onSuccess }) {
   const [formValue, setFormValue] = useState({
     email: '',
     password: ''
@@ -38,6 +38,8 @@ function Login({ onLogin, onEmail }) {
         }
       })
       .catch((err) => {
+        onSuccess(false);
+        onRegister();
         console.log(err);
       })
   }
